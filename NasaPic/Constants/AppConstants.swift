@@ -28,4 +28,6 @@ struct ImageModel {
     var metadataResponse: ImageResponse
     // Adding image as optional to load elements as soon as they are received
     var image: UIImage?
+    // Will keep this as String for ease
+    var date: String
 }

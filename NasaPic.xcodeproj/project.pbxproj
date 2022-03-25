@@ -16,6 +16,10 @@
 		9353EAE927ED57A000333CCC /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9353EAE827ED57A000333CCC /* APIManager.swift */; };
 		9353EAEB27ED582900333CCC /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9353EAEA27ED582900333CCC /* AppConstants.swift */; };
 		9353EAEF27ED5AE900333CCC /* ImageDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9353EAEE27ED5AE900333CCC /* ImageDataProvider.swift */; };
+		9353EAF227ED5EA700333CCC /* StorageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9353EAF127ED5EA700333CCC /* StorageHandler.swift */; };
+		9353EAF427ED5F0B00333CCC /* StorageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9353EAF327ED5F0B00333CCC /* StorageModel.swift */; };
+		9353EAF627ED61FF00333CCC /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9353EAF527ED61FF00333CCC /* DateHelper.swift */; };
+		9353EAF927ED668400333CCC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9353EAF827ED668400333CCC /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		9353EAE827ED57A000333CCC /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		9353EAEA27ED582900333CCC /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		9353EAEE27ED5AE900333CCC /* ImageDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataProvider.swift; sourceTree = "<group>"; };
+		9353EAF127ED5EA700333CCC /* StorageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageHandler.swift; sourceTree = "<group>"; };
+		9353EAF327ED5F0B00333CCC /* StorageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageModel.swift; sourceTree = "<group>"; };
+		9353EAF527ED61FF00333CCC /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		9353EAF827ED668400333CCC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,8 @@
 		9353EAD227ED53A000333CCC /* NasaPic */ = {
 			isa = PBXGroup;
 			children = (
+				9353EAF727ED667500333CCC /* NetworkManager */,
+				9353EAF027ED5E8700333CCC /* StorageHandler */,
 				9353EAED27ED5AD300333CCC /* ViewModel */,
 				9353EAEC27ED589B00333CCC /* Constants */,
 				9353EAE727ED578E00333CCC /* APIManager */,
@@ -72,6 +82,7 @@
 				9353EADC27ED53A200333CCC /* Assets.xcassets */,
 				9353EADE27ED53A200333CCC /* LaunchScreen.storyboard */,
 				9353EAE127ED53A200333CCC /* Info.plist */,
+				9353EAF527ED61FF00333CCC /* DateHelper.swift */,
 			);
 			path = NasaPic;
 			sourceTree = "<group>";
@@ -98,6 +109,23 @@
 				9353EAEE27ED5AE900333CCC /* ImageDataProvider.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9353EAF027ED5E8700333CCC /* StorageHandler */ = {
+			isa = PBXGroup;
+			children = (
+				9353EAF127ED5EA700333CCC /* StorageHandler.swift */,
+				9353EAF327ED5F0B00333CCC /* StorageModel.swift */,
+			);
+			path = StorageHandler;
+			sourceTree = "<group>";
+		};
+		9353EAF727ED667500333CCC /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				9353EAF827ED668400333CCC /* NetworkManager.swift */,
+			);
+			path = NetworkManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,10 +201,14 @@
 			files = (
 				9353EAEF27ED5AE900333CCC /* ImageDataProvider.swift in Sources */,
 				9353EAE927ED57A000333CCC /* APIManager.swift in Sources */,
+				9353EAF927ED668400333CCC /* NetworkManager.swift in Sources */,
 				9353EAD827ED53A000333CCC /* ViewController.swift in Sources */,
+				9353EAF427ED5F0B00333CCC /* StorageModel.swift in Sources */,
 				9353EAD427ED53A000333CCC /* AppDelegate.swift in Sources */,
 				9353EAD627ED53A000333CCC /* SceneDelegate.swift in Sources */,
+				9353EAF627ED61FF00333CCC /* DateHelper.swift in Sources */,
 				9353EAEB27ED582900333CCC /* AppConstants.swift in Sources */,
+				9353EAF227ED5EA700333CCC /* StorageHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

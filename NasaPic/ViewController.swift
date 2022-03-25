@@ -14,6 +14,7 @@ class ViewController: UIViewController, ImageDataProviderManageable {
     @IBOutlet weak var descriptionView: UITextView!
     
     private var imageDataProvider: ImageDataProvider!
+    private var storageHandler: StorageHandler!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +30,26 @@ class ViewController: UIViewController, ImageDataProviderManageable {
         }
     }
     
-    func modelDidUpdateWithError(error: Error) {
-        let alert = UIAlertController(title: "Error",
-                                      message: "We are not connected to the internet, showing you the last image we have.",
+    func modelDidUpdateWithResultFromStorage(with data: ImageModel, errorMessage: String) {
+        modelDidUpdate(with: data)
+        showErrorAlert(title: "Error", message: errorMessage)
+    }
+    
+    func modelDidUpdateWithError(error: Error?, customError: String?) {
+        var msg: String = ""
+        if customError != nil {
+            msg = customError ?? "Something went wrong"
+        } else {
+            if error != nil {
+                msg = error?.localizedDescription ?? "Something went wrong"
+            }
+        }
+        showErrorAlert(title: "Error", message: msg)
+    }
+    
+    func showErrorAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Close",
                                       style: .destructive,

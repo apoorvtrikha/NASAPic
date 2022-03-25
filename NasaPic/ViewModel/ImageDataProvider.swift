@@ -13,8 +13,11 @@ protocol ImageDataProviderManageable {
     func modelDidUpdate(with data: ImageModel)
     
     
+    func modelDidUpdateWithResultFromStorage(with data: ImageModel, errorMessage: String)
+    
+    
     /// Needs to be updated by the main controller when error is received
-    func modelDidUpdateWithError(error: Error)
+    func modelDidUpdateWithError(error: Error?, customError: String?)
 }
 
 class ImageDataProvider {
@@ -32,18 +35,42 @@ class ImageDataProvider {
     /// Fetches the images by talking to APIManager
     /// - Parameter noOfImages: Number of images we need to fetch
     private func fetchImages() {
+        // If there is a saved response
+        if let savedResponse = StorageHandler().getSavedImageResponse() {
+            // If saved response date matches with current date
+            // We don't need to make API call, simply return with save response
+            if savedResponse.date == Date.getCurrentDate() {
+                self.delegate.modelDidUpdate(with: savedResponse)
+                return
+            } else {
+                // Check if there is internet available
+                if !NetworkManager.shared.isReachable {
+                    self.delegate.modelDidUpdateWithResultFromStorage(with: savedResponse, errorMessage: "We are not connected to the internet, showing you the last image we have.")
+                    return
+                }
+            }
+            
+        } else {
+            // If no saved response is there and internet not reachable
+            if !NetworkManager.shared.isReachable {
+                self.delegate.modelDidUpdateWithError(error: nil, customError: "Internet Not Available")
+                return
+            }
+        }
+
         let apiManager = APIManager()
         apiManager.getImagesMetadata(onSuccess: { response in
-            self.model = ImageModel(metadataResponse: response)
+            self.model = ImageModel(metadataResponse: response, date: Date.getCurrentDate())
             self.updateViewController()
             apiManager.getImageFromURL(using: response.url, onSuccess: { image in
-                self.model = ImageModel(metadataResponse: response, image: image)
+                self.model = ImageModel(metadataResponse: response, image: image, date: Date.getCurrentDate())
+                StorageHandler().saveImageResponse(response: self.model)
                 self.updateViewController()
             }, onFailure: {error in
-                self.delegate.modelDidUpdateWithError(error: error)
+                self.delegate.modelDidUpdateWithError(error: error, customError: nil)
             })
         }, onFailure: {error in
-            self.delegate.modelDidUpdateWithError(error: error)
+            self.delegate.modelDidUpdateWithError(error: error, customError: nil)
         })
     }
     
