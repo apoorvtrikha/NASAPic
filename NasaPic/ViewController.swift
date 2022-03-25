@@ -20,7 +20,7 @@ class ViewController: UIViewController, ImageDataProviderManageable {
         imageDataProvider = ImageDataProvider(delegate: self)
         // Do any additional setup after loading the view.
     }
-
+    
     func modelDidUpdate(with data: ImageModel) {
         DispatchQueue.main.async { [weak self] in
             self?.imageView.image = data.image
@@ -30,7 +30,15 @@ class ViewController: UIViewController, ImageDataProviderManageable {
     }
     
     func modelDidUpdateWithError(error: Error) {
-        //Something
+        let alert = UIAlertController(title: "Error",
+                                      message: "We are not connected to the internet, showing you the last image we have.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Close",
+                                      style: .destructive,
+                                      handler: nil))
+        DispatchQueue.main.async { [weak self] in
+            self?.present(alert, animated: true, completion: nil)
+        }
     }
     
 }
