@@ -7,35 +7,31 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ImageDataProviderManageable {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleView: UILabel!
     @IBOutlet weak var descriptionView: UITextView!
     
+    private var imageDataProvider: ImageDataProvider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        callAndGet()
+        imageDataProvider = ImageDataProvider(delegate: self)
         // Do any additional setup after loading the view.
     }
-    
-    func callAndGet() {
-        let apiManager = APIManager()
-        apiManager.getImagesMetadata(onSuccess: { response in
-            apiManager.getImageFromURL(using: response.url, onSuccess: { image in
-                DispatchQueue.main.async { [weak self] in
-                    self?.imageView.image = image
-                    self?.titleView.text = response.title
-                    self?.descriptionView.text = response.explanation
-                }
-            }, onFailure: {error in
-                print(error)
-            })
-        }, onFailure: {error in
-            print(error)
-        })
+
+    func modelDidUpdate(with data: ImageModel) {
+        DispatchQueue.main.async { [weak self] in
+            self?.imageView.image = data.image
+            self?.titleView.text = data.metadataResponse.title
+            self?.descriptionView.text = data.metadataResponse.explanation
+        }
     }
     
+    func modelDidUpdateWithError(error: Error) {
+        //Something
+    }
     
 }
 
