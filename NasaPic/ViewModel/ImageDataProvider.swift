@@ -34,15 +34,21 @@ class ImageDataProvider {
     private func fetchImages() {
         let apiManager = APIManager()
         apiManager.getImagesMetadata(onSuccess: { response in
+            self.model = ImageModel(metadataResponse: response)
+            self.updateViewController()
             apiManager.getImageFromURL(using: response.url, onSuccess: { image in
                 self.model = ImageModel(metadataResponse: response, image: image)
-                self.delegate.modelDidUpdate(with: self.model)
+                self.updateViewController()
             }, onFailure: {error in
                 self.delegate.modelDidUpdateWithError(error: error)
             })
         }, onFailure: {error in
             self.delegate.modelDidUpdateWithError(error: error)
         })
+    }
+    
+    private func updateViewController() {
+        self.delegate.modelDidUpdate(with: self.model)
     }
     
 }

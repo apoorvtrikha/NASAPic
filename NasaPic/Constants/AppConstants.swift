@@ -26,5 +26,6 @@ struct ImageResponse: Codable {
 
 struct ImageModel {
     var metadataResponse: ImageResponse
-    var image: UIImage
+    // Adding image as optional to load elements as soon as they are received
+    var image: UIImage?
 }
