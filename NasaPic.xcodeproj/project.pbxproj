@@ -13,6 +13,8 @@
 		9353EADB27ED53A000333CCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9353EAD927ED53A000333CCC /* Main.storyboard */; };
 		9353EADD27ED53A200333CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9353EADC27ED53A200333CCC /* Assets.xcassets */; };
 		9353EAE027ED53A200333CCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9353EADE27ED53A200333CCC /* LaunchScreen.storyboard */; };
+		9353EAE927ED57A000333CCC /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9353EAE827ED57A000333CCC /* APIManager.swift */; };
+		9353EAEB27ED582900333CCC /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9353EAEA27ED582900333CCC /* AppConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		9353EADC27ED53A200333CCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9353EADF27ED53A200333CCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9353EAE127ED53A200333CCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9353EAE827ED57A000333CCC /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		9353EAEA27ED582900333CCC /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 		9353EAD227ED53A000333CCC /* NasaPic */ = {
 			isa = PBXGroup;
 			children = (
+				9353EAEC27ED589B00333CCC /* Constants */,
+				9353EAE727ED578E00333CCC /* APIManager */,
 				9353EAD327ED53A000333CCC /* AppDelegate.swift */,
 				9353EAD527ED53A000333CCC /* SceneDelegate.swift */,
 				9353EAD727ED53A000333CCC /* ViewController.swift */,
@@ -65,6 +71,22 @@
 				9353EAE127ED53A200333CCC /* Info.plist */,
 			);
 			path = NasaPic;
+			sourceTree = "<group>";
+		};
+		9353EAE727ED578E00333CCC /* APIManager */ = {
+			isa = PBXGroup;
+			children = (
+				9353EAE827ED57A000333CCC /* APIManager.swift */,
+			);
+			path = APIManager;
+			sourceTree = "<group>";
+		};
+		9353EAEC27ED589B00333CCC /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				9353EAEA27ED582900333CCC /* AppConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +160,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9353EAE927ED57A000333CCC /* APIManager.swift in Sources */,
 				9353EAD827ED53A000333CCC /* ViewController.swift in Sources */,
 				9353EAD427ED53A000333CCC /* AppDelegate.swift in Sources */,
 				9353EAD627ED53A000333CCC /* SceneDelegate.swift in Sources */,
+				9353EAEB27ED582900333CCC /* AppConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
